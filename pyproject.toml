@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "bonus: 作業加分功能",
+    "gui: 使用真正的 Tk 視窗元件",
+    "course: 使用課程原始附件",
+    "release: 檢查實際繳交的 ZIP",
+]
