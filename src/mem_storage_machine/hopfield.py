@@ -37,9 +37,6 @@ def recall(weights: np.ndarray, cue: np.ndarray, *, max_sweeps: int = 30) -> np.
     return input_x
 
 
-    raise NotImplementedError("T02 recall")
-
-
 def add_noise(pattern: np.ndarray, *, flips: int, seed: int) -> np.ndarray:
     """複製圖案，選 flips 個不同位置翻轉正負號。"""
     raise NotImplementedError("T04 add_noise")

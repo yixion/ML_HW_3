@@ -3,7 +3,6 @@ from pathlib import Path
 
 import numpy as np
 
-# path should be Path(path).expanduser().resolve()
 def load_patterns(path: Path) -> np.ndarray:
     """回傳 (圖數, 高, 寬) 的雙極像素。"""
     patterns = []
@@ -37,4 +36,6 @@ def load_samples(path: Path) -> tuple[np.ndarray, list[str]]:
 
 if __name__ == "__main__":
     path = Path("/home/xion/ML_HW_3/data/hopfield/Basic_Training.txt")
-    load_patterns(path)
+    images = load_patterns(path)
+    images = images.reshape(len(images),-1)
+    print(images.shape)
