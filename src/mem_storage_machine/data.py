@@ -31,6 +31,10 @@ def load_patterns(path: Path) -> np.ndarray:
 
 def load_samples(path: Path) -> tuple[np.ndarray, list[str]]:
     """回傳數值特徵矩陣與最右欄標籤。"""
+    data = np.loadtxt(path,dtype=str)
+    feature, label = np.split(data,[data.shape[1]-1], axis=1)
+    return feature.astype(float), label.flatten().tolist()
+
     raise NotImplementedError("T05 load_samples")
 
 

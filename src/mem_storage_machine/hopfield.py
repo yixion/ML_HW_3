@@ -39,7 +39,13 @@ def recall(weights: np.ndarray, cue: np.ndarray, *, max_sweeps: int = 30) -> np.
 
 def add_noise(pattern: np.ndarray, *, flips: int, seed: int) -> np.ndarray:
     """複製圖案，選 flips 個不同位置翻轉正負號。"""
-    raise NotImplementedError("T04 add_noise")
+    noise_pattern = pattern.copy()
+    rng = np.random.default_rng(seed)
+    arr = rng.integers(0,pattern.shape[0]*pattern.shape[1],size=flips)
+    noise_pattern = noise_pattern.reshape(1,-1)
+    for i in arr:
+        noise_pattern[0][i] = -noise_pattern[0][i]
+    return noise_pattern.reshape(pattern.shape[0],pattern.shape[1])
 
 
 if __name__ == "__main__":
