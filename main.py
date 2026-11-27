@@ -6,7 +6,7 @@ import tkinter as tk
 BASE = Path(__file__).resolve().parent
 sys.path.insert(0, str(BASE / "src"))
 
-from hw3.gui import build_app
+from mem_storage_machine.gui import build_app
 
 
 def main():
