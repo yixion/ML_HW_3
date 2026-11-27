@@ -52,8 +52,12 @@ def run_som(path: Path, *, iterations: int, grid_shape: tuple[int, int] = (4, 4)
     if iterations <=0:
         raise ValueError("[SOM_ITERATIONS] 迭代次數必須為正整數。")
     features, labels = load_samples(path)
-    rng = np.random.default_rng(seed)  
-    initial = rng.random((grid_shape[0],grid_shape[1], features.shape[1]))
+    rng = np.random.default_rng(seed)
+    initial = rng.uniform(
+        low=features.min(axis=0),
+        high=features.max(axis=0),
+        size=(*grid_shape, features.shape[1]),
+    )
     history = som.train(features, initial, iterations=iterations)
     winners = [som.bmu(history[-1],sample) for sample in features]
     return SomRun(features,labels, history, winners)
